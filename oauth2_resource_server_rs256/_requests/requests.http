@@ -1,0 +1,32 @@
+### Get Token for Admin (read, write scopes)
+POST localhost:8080/auth
+Content-Type: application/json
+
+{
+  "username": "superadmin@example.com",
+  "password": "hard"
+}
+
+### Get Token for User (only read scope)
+POST localhost:8080/auth
+Content-Type: application/json
+
+{
+  "username": "john@example.com",
+  "password": "dog.8"
+}
+
+### Read Protected Resource (read scope required)
+GET localhost:8080/api/products
+Content-Type: application/json
+Authorization: Bearer your_generated_token_here
+
+### Write Protected Resource (write scope required)
+POST localhost:8080/api/products
+Content-Type: application/json
+Authorization: Bearer your_generated_token_here
+
+{
+  "name": "Some new product",
+  "price": 29.99
+}
