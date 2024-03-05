@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework.security: trace
+
+spring:
+  security:
+    user:
+      name: user
+      password: pass
+    oauth2:
+      authorizationserver:
+        client:
+          client-1:
+            registration:
+              client-id: "client-1"
+              client-secret: "{noop}secret"
+              client-name: "client-1-name"
+              client-authentication-methods:
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "authorization_code"
+                - "refresh_token"
+              redirect-uris:
+                - "http://127.0.0.1:8082/login/oauth2/code/client1"
+              post-logout-redirect-uris:
+                - "http://127.0.0.1:8082/"
+              scopes:
+                - "user.read"
+                - "user.write"
+                - "openid"
+                - "profile"
+            require-authorization-consent: true
