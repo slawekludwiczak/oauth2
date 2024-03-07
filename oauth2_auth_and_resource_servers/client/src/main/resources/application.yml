@@ -17,7 +17,7 @@ spring:
               - "openid"
         provider:
           spring:
-            issuer-uri: http://localhost:8080
+            issuer-uri: http://auth-server:8080
 
 server:
   port: 8082

@@ -32,4 +32,4 @@ spring:
                 - "products.write"
                 - "openid"
                 - "profile"
-            require-authorization-consent: true
+            require-authorization-consent: false
