@@ -25,8 +25,8 @@ class SecurityConfig {
                                            MvcRequestMatcher.Builder mvc,
                                            AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         http.authorizeHttpRequests(requests -> requests
-                .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/products")).access(hasScope("user.write")) //SCOPE_write authority
-                .requestMatchers(mvc.pattern("/api/products")).access(hasScope("user.read")) //SCOPE_read authority
+                .requestMatchers(mvc.pattern(HttpMethod.POST, "/api/products")).access(hasScope("products.write")) //SCOPE_write authority
+                .requestMatchers(mvc.pattern("/api/products")).access(hasScope("products.read")) //SCOPE_read authority
                 .anyRequest().permitAll()
         );
         http.sessionManagement(sessionConfig -> sessionConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS));

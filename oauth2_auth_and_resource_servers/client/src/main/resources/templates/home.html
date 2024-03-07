@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OAauth2 Demo</title>
+</head>
+<body>
+    <h1 th:text="|Demo App ${clientId}|">Demo App</h1>
+    <a th:href="@{/products}">All Products</a>
+    <br/>
+    <a th:href="@{/add-product}">Add Product</a>
+    <br/>
+    <a th:href="@{/token}">AccessToken</a>
+</body>
+</html>

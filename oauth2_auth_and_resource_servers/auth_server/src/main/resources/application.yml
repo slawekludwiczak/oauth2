@@ -28,8 +28,8 @@ spring:
               post-logout-redirect-uris:
                 - "http://127.0.0.1:8082/"
               scopes:
-                - "user.read"
-                - "user.write"
+                - "products.read"
+                - "products.write"
                 - "openid"
                 - "profile"
             require-authorization-consent: true

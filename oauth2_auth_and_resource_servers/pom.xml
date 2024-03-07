@@ -30,5 +30,6 @@
     <modules>
         <module>resource_server</module>
         <module>auth_server</module>
+        <module>client</module>
     </modules>
 </project>

@@ -12,12 +12,13 @@ spring:
             client-authentication-method: client_secret_basic
             redirect-uri: "http://127.0.0.1:8082/login/oauth2/code/{registrationId}"
             scope:
-              - "user.read"
-              - "user.write"
+              - "products.read"
+              - "products.write"
               - "openid"
         provider:
           spring:
             issuer-uri: http://localhost:8080
+
 server:
   port: 8082
 logging:

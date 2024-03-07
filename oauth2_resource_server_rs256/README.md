@@ -9,7 +9,7 @@ To generate private-public key pair use commands:
 #generate private-public key pair
 ssh-keygen -t rsa -b 4096 -m PKCS8 -f rs256.key
 #Java requires x509 format, so convert the public key
-ssh-keygen -m PKCS8 -f rs256.key.pub -e > rs256.key.pub.pem
+ssh-keygen -m PKCS8 -f rs256.key -e > rs256.key.pub
 #or
 openssl rsa -in rs256.key -pubout -outform PEM -out rs256.key.pub
 ```
