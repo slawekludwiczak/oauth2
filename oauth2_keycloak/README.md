@@ -1,6 +1,6 @@
 Sample project using Oauth2 Stack:
 - KeyCloak as Authorization Server
-- OAuth2 Client (frontend)
+- OAuth2 Confidential Client (frontend)
 - OAuth2 Resource Server (api)
 
 Add to your hosts file:
@@ -13,14 +13,14 @@ It is important to use localhost or 127.0.0.1 across keycloak configuration and 
 
 To export realm configured in keycloak:
 ```bash
-docker exec keycloak sh /opt/keycloak/bin/kc.sh export --realm spring-realm --file /opt/keycloak/data/spring-realm.json
-not needed when mounted
+docker exec keycloak sh /opt/keycloak/bin/kc.sh export --realm spring-realm --file /opt/keycloak/data/import/spring-realm.json
+not needed when mounted:
 docker cp keycloak:/opt/keycloak/data/spring-realm.json ./spring-realm.json
 ```
-
 To run:
 ```
 mvn package jib:dockerBuild
+docker compose up
 ```
 
 Create KeyCloak realm and users:

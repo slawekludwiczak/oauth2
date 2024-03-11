@@ -12,7 +12,7 @@ services:
       - start-dev
       - --import-realm
     volumes:
-      - ./keycloak/spring-realm.json:/opt/keycloak/data/import/spring-realm.json:ro
+      - ./keycloak/spring-realm.json:/opt/keycloak/data/import/spring-realm.json
       - ./keycloak/HealthCheck.java:/opt/HealthCheck.java:ro
     healthcheck:
       test: ["CMD", "java", "/opt/HealthCheck.java", "http://localhost:8080/health/started", "||", "exit", "1"]

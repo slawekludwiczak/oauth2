@@ -7,8 +7,8 @@ spring:
             client-id: kc-client
             authorization-grant-type: authorization_code
             redirect-uri: http://localhost:8082/login/oauth2/code/kc-client
-#            client-authentication-method: client_secret_basic
-#            client-secret: xyz
+            client-authentication-method: client_secret_basic
+            client-secret: MqJdl8r90is291Vx5aQDapIo4SIkdMWw
             scope:
               - "openid"
               - "products.read"
