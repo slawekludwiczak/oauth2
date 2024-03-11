@@ -1,0 +1,35 @@
+services:
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:24.0.1
+    ports:
+      - 8080:8080
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_HEALTH_ENABLED=true
+    command:
+      - start-dev
+      - --import-realm
+    volumes:
+      - ./keycloak/spring-realm.json:/opt/keycloak/data/import/spring-realm.json:ro
+      - ./keycloak/HealthCheck.java:/opt/HealthCheck.java:ro
+    healthcheck:
+      test: ["CMD", "java", "/opt/HealthCheck.java", "http://localhost:8080/health/started", "||", "exit", "1"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  spring-oauth-client:
+    container_name: frontend-client
+    image: ludigi.com/spring-oauth-client
+    ports:
+      - 8082:8082
+    depends_on:
+      keycloak:
+        condition: service_healthy
+  spring-oauth-resource-server:
+    container_name: products
+    image: ludigi.com/spring-oauth-resource-server
+    depends_on:
+      keycloak:
+        condition: service_healthy

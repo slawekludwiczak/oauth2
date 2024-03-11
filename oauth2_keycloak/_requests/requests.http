@@ -1,0 +1,32 @@
+### Get Token for Admin (read, write scopes)
+POST localhost:8080/auth
+Content-Type: application/json
+
+{
+  "username": "superadmin@example.com",
+  "password": "hard"
+}
+
+### Get Token for User (only read scope)
+POST localhost:8080/auth
+Content-Type: application/json
+
+{
+  "username": "john@example.com",
+  "password": "dog.8"
+}
+
+### Read Protected Resource (read scope required)
+GET localhost:8081/api/products
+Content-Type: application/json
+Authorization: Bearer eyJraWQiOiI2ZDAyMmVkYy0zNmRlLTQ4YjQtODk3NS1mY2IyOTM3NDQ2YjciLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJhdWQiOiJjbGllbnQtMSIsIm5iZiI6MTcwOTI4NzUyNywic2NvcGUiOlsidXNlci5yZWFkIiwidXNlci53cml0ZSIsIm9wZW5pZCJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAiLCJleHAiOjE3MDkyODc4MjcsImlhdCI6MTcwOTI4NzUyNywianRpIjoiM2Q3YTdjZDktMzRmMS00NGNjLWJjYzMtYjg1ZDc0MTQyNjkyIn0.E0jZiUhnsxS79t8_WjAQIxfbA6XmeGnk3tgeiWJ6eKrQZWyr7jTS-NynbiwaQ4V7kozQO9_eGV7dcZwSlSbsUIxuyqD1EqU_7mwFxeiTD2k_yIl2ptb0Cxdt9qGYsgDdOOq3h_KTu5woHB8Jx9y6VgKwFv-CxSgcKGnBhY5LbI4acFBznPlxV2J-iXRAxnWmAn35EhpTyRSQursvEqbf0B0pLnPH9q2ROsykrXBMfAu4iosG57aQoluZe8JeAMvIHd0cvnl4s04UnbbRo0A1yxcqOeckIoZmLbaZS9rkmSE3L98dJZCqTZ_318322p7m1YLwZHWWfhiVzxtHIRe_4Q
+
+### Write Protected Resource (write scope required)
+POST localhost:8080/api/products
+Content-Type: application/json
+Authorization: Bearer your_generated_token_here
+
+{
+  "name": "Some new product",
+  "price": 29.99
+}
